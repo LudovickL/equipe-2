@@ -4,11 +4,20 @@ import ListeDossiers from './ListeDossiers';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Accueil from './Accueil';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import firebase from 'firebase/app';
 
 export default function Appli() {
   const etatUtilisateur = useState(null);
   const [utilisateur, setUtilisateur] = etatUtilisateur;
+
+  useEffect(
+    () => {
+      firebase.auth().onAuthStateChanged(
+          util => setUtilisateur(util)
+      );
+    }, []
+  );
 
   return (
     <div className="Appli">
@@ -24,7 +33,7 @@ export default function Appli() {
             </section>
           </>
         :
-          <Accueil />
+          <Accueil etatUtilisateur={etatUtilisateur}/>
       }
     </div>
   );
