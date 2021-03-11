@@ -1,5 +1,5 @@
-import fb from 'firebase/app';
-import * as firebaseui from 'firebaseui/app';
+import firebase from 'firebase/app';
+import * as firebaseui from 'firebaseui';
 import 'firebase/firestore';
 
 
@@ -15,9 +15,9 @@ const firebaseConfig = {
     measurementId: "G-7E4KNNT45H"
   };
 
-// Innitialiser Firebase
+// Initialiser Firebase
 if(!firebaseConfig.apps.lenght) {
-    fb.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
 }
 
 // Initialiser Firestore

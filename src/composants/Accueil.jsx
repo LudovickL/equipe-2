@@ -9,20 +9,11 @@ export default function Accueil({etatUtilisateur}) {
 
   useEffect(
     () => widgetFirebaseui.start("#connexion-firebaseui", {
-      callbacks: {
-        signInSuccessWithAuthResult: function(){
-
-        }
-      },
       signInOption: [
         {
           provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
           fullLabel: 'Connexion avec Google'
         }
-        // {
-        //   provider: firebase.auth.GithubAuthProvider.PROVIDER_ID,
-        //   fullLabel: 'Connexion avec Github'
-        // }
       ]
     }), [utilisateur]
   );

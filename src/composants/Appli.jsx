@@ -14,7 +14,9 @@ export default function Appli() {
   useEffect(
     () => {
       firebase.auth().onAuthStateChanged(
-          util => setUtilisateur(util)
+        util => {
+          setUtilisateur(util)
+        }
       );
     }, []
   );
@@ -24,7 +26,7 @@ export default function Appli() {
       {
         utilisateur ?
           <>
-            <Entete />
+            <Entete etatUtilisateur={etatUtilisateur} />
             <section className="contenu-principal">
               <ListeDossiers />
               <Fab className="ajoutRessource" color="primary" aria-label="Ajouter dossier">
