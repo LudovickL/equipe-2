@@ -10,6 +10,7 @@ export default function Accueil({etatUtilisateur}) {
   useEffect(
     () => widgetFirebaseui.start("#connexion-firebaseui", {
       signInOption: [
+        
         {
           provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
           fullLabel: 'Connexion avec Google'

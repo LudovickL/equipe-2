@@ -6,6 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Accueil from './Accueil';
 import { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
+import {firestore} from '../data/firebase';
 
 export default function Appli() {
   const etatUtilisateur = useState(null);
@@ -16,6 +17,14 @@ export default function Appli() {
       firebase.auth().onAuthStateChanged(
         util => {
           setUtilisateur(util)
+          if(util) {
+            firestore.collection('utilisateurs').doc(util.uid).set({
+              nom: util.displayName,
+              courriel: util.email,
+              photo: util.photoURL,
+              date_creation:firebase.firestore.FieldValue.serverTimestamp()
+            }, {merge: true});
+          }
         }
       );
     }, []
